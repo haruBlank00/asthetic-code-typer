@@ -1,9 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Highlight, themes } from "prism-react-renderer";
-import TypeIt from "typeit-react";
 import { ComboBox } from "@/components/combobox";
-import { useState } from "react";
+import { Card } from "@/components/ui/card";
 import { TThemeKey, themesToArray } from "@/lib/utils";
+import { themes } from "prism-react-renderer";
+import { useState } from "react";
+import { PrismCodeRenderer } from "@/components/PrismCodeRenderer";
 
 const codeBlock = `import { Card, CardContent } from "@/components/ui/card";
 import { Highlight, themes } from "prism-react-renderer";
@@ -41,7 +41,6 @@ export default App;
 const App = () => {
   const [theme, setTheme] = useState<TThemeKey>("dracula");
   const themeOptions = themesToArray(themes);
-
   const selectedTheme = themes[theme];
   return (
     <div
@@ -64,26 +63,8 @@ const App = () => {
             />
           </div>
         </Card>
-        <Card>
-          <CardContent>
-            <Highlight theme={selectedTheme} code={codeBlock} language="tsx">
-              {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre style={style}>
-                  <TypeIt>
-                    {tokens.map((line, i) => (
-                      <div key={i} {...getLineProps({ line })}>
-                        <span className="p-1 border-r-white">{i + 1}</span>{" "}
-                        {line.map((token, key) => (
-                          <span key={key} {...getTokenProps({ token })} />
-                        ))}
-                      </div>
-                    ))}
-                  </TypeIt>
-                </pre>
-              )}
-            </Highlight>
-          </CardContent>
-        </Card>
+
+        <PrismCodeRenderer theme={selectedTheme} code={codeBlock} />
       </div>
     </div>
   );
