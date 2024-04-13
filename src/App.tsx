@@ -1,9 +1,9 @@
+import { PrismCodeRenderer } from "@/components/PrismCodeRenderer";
 import { ComboBox } from "@/components/combobox";
 import { Card } from "@/components/ui/card";
 import { TThemeKey, themesToArray } from "@/lib/utils";
 import { themes } from "prism-react-renderer";
 import { useState } from "react";
-import { PrismCodeRenderer } from "@/components/PrismCodeRenderer";
 
 const codeBlock = `import { Card, CardContent } from "@/components/ui/card";
 import { Highlight, themes } from "prism-react-renderer";
@@ -42,6 +42,7 @@ const App = () => {
   const [theme, setTheme] = useState<TThemeKey>("dracula");
   const themeOptions = themesToArray(themes);
   const selectedTheme = themes[theme];
+
   return (
     <div
       className="container flex flex-col
