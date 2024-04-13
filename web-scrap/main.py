@@ -39,9 +39,8 @@ else:
             language, key, className = row_data
 
             supported_languages.append({
-                'language': language,
+                'label': language,
                 'key': key,
-                'className': className
             })
         print(supported_languages)
         pyperclip.copy(json.dumps(supported_languages))
