@@ -40,7 +40,7 @@ else:
 
             supported_languages.append({
                 'label': language,
-                'key': key,
+                'value': key,
             })
         print(supported_languages)
         pyperclip.copy(json.dumps(supported_languages))
