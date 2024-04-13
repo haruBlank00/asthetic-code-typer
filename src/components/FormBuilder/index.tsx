@@ -49,6 +49,7 @@ export function FormBuilder<T extends FieldValues>({
     if (hasCustomRender) {
       return (
         <FormField
+          key={name}
           control={control}
           name={name! as Path<T>}
           render={({ field: controllerField }) =>
@@ -62,6 +63,7 @@ export function FormBuilder<T extends FieldValues>({
     }
     return (
       <FormField
+        key={name}
         control={control}
         name={name! as Path<T>}
         render={({ field }) => (

@@ -1,5 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
-import { PrismTheme, themes } from "prism-react-renderer";
+import { Language, PrismTheme, themes } from "prism-react-renderer";
 import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,4 +18,8 @@ export const themesToArray = (themes: Record<TThemeKey, PrismTheme>) => {
     }
   }
   return themesArray;
+};
+
+export const languagesToArray = (languages: Language) => {
+  console.log(languages);
 };

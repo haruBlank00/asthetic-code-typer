@@ -58,8 +58,8 @@ const settingsFields: InputField[] = [
       const value = controllerField.value;
       const setValue = (value: string) => controllerField.onChange(value);
       return (
-        <FormItem>
-          <FormLabel>{field.label}</FormLabel>
+        <FormItem className="flex flex-col gap-2">
+          <FormLabel className="text-lg">{field.label}</FormLabel>
           <FormControl>
             <ComboBox
               items={themeOptions}
@@ -80,6 +80,7 @@ const App = () => {
   const { resolver, defaultValues } = useFormSchema({
     schema: z.object({
       "prism-theme": z.string().default("dracula"),
+      language: z.string().default(""),
     }),
   });
 
@@ -95,6 +96,8 @@ const App = () => {
     console.log(values);
   };
 
+  // console.log(languagesToArray(typeof Language));
+
   return (
     <div
       className="container flex flex-col
@@ -104,8 +107,8 @@ const App = () => {
         Welcome to Asthetic Code typer :)
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-        <Card>
+      <div className="flex gap-4 md:gap-8">
+        <Card className="w-fit p-4">
           <AstheticForm
             fields={settingsFields}
             form={settingsForm}
@@ -113,7 +116,17 @@ const App = () => {
           />
         </Card>
 
-        <PrismCodeRenderer theme={selectedTheme} code={codeBlock} />
+        <PrismCodeRenderer
+          theme={selectedTheme}
+          code={codeBlock}
+          typeItProps={{
+            options: {
+              breakLines: true,
+              lifeLike: true,
+              speed: 1,
+            },
+          }}
+        />
       </div>
     </div>
   );
