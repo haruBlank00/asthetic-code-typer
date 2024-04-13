@@ -3,12 +3,11 @@ import { Form } from "@/components/ui/form";
 import { FieldValues, SubmitHandler, UseFormReturn } from "react-hook-form";
 
 type AstheticFormProps<T extends FieldValues> = {
-  form: UseFormReturn<FieldValues, T>;
-  onSubmit: SubmitHandler<FieldValues>;
+  form: UseFormReturn<T>;
+  onSubmit: SubmitHandler<T>;
   fields: InputField[];
-  key: string;
 };
-export function AstheticForm<T>({
+export function AstheticForm<T extends FieldValues>({
   form,
   onSubmit,
   fields,
