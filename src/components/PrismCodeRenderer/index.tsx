@@ -13,7 +13,7 @@ export const PrismCodeRenderer = ({
   typeItProps,
 }: PrismCodeRendererProps) => {
   return (
-    <Card>
+    <Card className="flex-1">
       <CardContent>
         <Highlight theme={theme} code={code} language="">
           {({ style, tokens, getLineProps, getTokenProps }) => {

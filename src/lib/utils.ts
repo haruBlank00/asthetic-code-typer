@@ -19,7 +19,3 @@ export const themesToArray = (themes: Record<TThemeKey, PrismTheme>) => {
   }
   return themesArray;
 };
-
-export const languagesToArray = (languages: Language) => {
-  console.log(languages);
-};

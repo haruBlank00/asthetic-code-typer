@@ -15,6 +15,7 @@ import { themes } from "prism-react-renderer";
 import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { supportedLanguages } from "./data/prism/supported-languages";
 
 const codeBlock = `import { Card, CardContent } from "@/components/ui/card";
 import { Highlight, themes } from "prism-react-renderer";
@@ -74,13 +75,36 @@ const settingsFields: InputField[] = [
       );
     },
   },
+  {
+    label: "Select Language :)",
+    name: "prism-language",
+    render({ field, controllerField }) {
+      const value = controllerField.value;
+      const setValue = (value: string) => controllerField.onChange(value);
+      return (
+        <FormItem className="flex flex-col gap-2">
+          <FormLabel className="text-lg">{field.label}</FormLabel>
+          <FormControl>
+            <ComboBox
+              items={supportedLanguages}
+              notFoundMessage="Language not found"
+              placeholder="Select the Language..."
+              value={value}
+              setValue={setValue as Dispatch<SetStateAction<string>>}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      );
+    },
+  },
 ];
 
 const App = () => {
   const { resolver, defaultValues } = useFormSchema({
     schema: z.object({
       "prism-theme": z.string().default("dracula"),
-      language: z.string().default(""),
+      language: z.string().default("language-jsx"),
     }),
   });
 
@@ -95,8 +119,6 @@ const App = () => {
   const onSubmit = (values: typeof defaultValues) => {
     console.log(values);
   };
-
-  // console.log(languagesToArray(typeof Language));
 
   return (
     <div
