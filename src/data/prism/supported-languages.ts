@@ -1,4 +1,4 @@
-export const supportedLanguage = [
+export const supportedLanguages = [
   { label: "Markup", value: "markup" },
   { label: "CSS", value: "css" },
   { label: "C-like", value: "clike" },
