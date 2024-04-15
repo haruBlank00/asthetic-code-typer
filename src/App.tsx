@@ -15,9 +15,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TypeItProps } from "typeit-react";
 import { z } from "zod";
-import { PrismCodeRenderer } from "./components/PrismCodeRenderer";
-import { Button } from "./components/ui/button";
-import { supportedLanguages } from "./data/prism/supported-languages";
+import { PrismCodeRenderer } from "@/components/PrismCodeRenderer";
+import { Button } from "@/components/ui/button";
+import { supportedLanguages } from "@/data/prism/supported-languages";
+import { StartTyping } from "@/components/StartTyping";
 const codeBlock = `import { Card, CardContent } from "@/components/ui/card";
 import { Highlight, themes } from "prism-react-renderer";
 
@@ -199,7 +200,7 @@ const App = () => {
             }}
           />
         ) : (
-          <h1>nothing to show</h1>
+          <StartTyping />
         )}
       </div>
     </div>
