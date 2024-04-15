@@ -68,7 +68,6 @@ const App = () => {
     resolver,
     defaultValues,
   });
-  const [typeItInstance, setTypeItInstance] = useState<unknown>();
   const [showTyper, setShowTyper] = useState(false);
 
   const settingsFields: InputField<typeof defaultValues>[] = [
@@ -197,10 +196,6 @@ const App = () => {
             code={code}
             typeItProps={{
               options: typeItOptions,
-              getBeforeInit(instance) {
-                setTypeItInstance(instance);
-                return instance;
-              },
             }}
           />
         ) : (
