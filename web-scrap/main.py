@@ -18,6 +18,7 @@ import json
 url = 'https://lucidar.me/en/web-dev/list-of-supported-languages-by-prism/'
 response = requests.get(url)
 
+
 is_success = response.status_code == 200
 if not is_success:
     print("Request failed.")
